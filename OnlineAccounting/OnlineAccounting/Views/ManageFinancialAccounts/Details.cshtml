@@ -1,0 +1,104 @@
+﻿@model OnlineAccounting.Models.FinancialAccount
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Detail</h1>
+
+<div>
+    <h4>Financial Account</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AccountCode)
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DebitBalance)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DebitBalance)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreditBalance)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreditBalance)
+        </dt>
+
+    </dl>
+
+    <h4>Ledger Entry</h4>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.LedgerEntries[0].Account)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LedgerEntries[0].TargetAccountId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LedgerEntries[0].type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LedgerEntries[0].Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LedgerEntries[0].Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LedgerEntries[0].Description)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.LedgerEntries)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Account.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TargetAccountId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

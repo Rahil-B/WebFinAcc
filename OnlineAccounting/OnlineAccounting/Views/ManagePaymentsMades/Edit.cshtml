@@ -1,0 +1,70 @@
+﻿@model OnlineAccounting.Models.Purchase.PaymentsMade
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>PaymentsMade</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="VendorId" class="control-label"></label>
+                <select asp-for="VendorId" class="form-control" asp-items="ViewBag.VendorId"></select>
+                <span asp-validation-for="VendorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentFromAccountId" class="control-label"></label>
+                <select asp-for="PaymentFromAccountId" class="form-control" asp-items="ViewBag.PaymentFromAccountIds">
+                    <option value="">Select</option>
+                </select>
+                <a asp-action="Create" asp-controller="ManageFinancialAccounts">Add Account</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentToAccountId" class="control-label"></label>
+                <select asp-for="PaymentToAccountId" class="form-control" asp-items="ViewBag.PaymentToAccountIds">
+                    <option value="">Select</option>
+                </select>
+                <a asp-action="Create" asp-controller="ManageFinancialAccounts">Add Account</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mode" class="control-label"></label>
+                <select asp-for="Mode" class="form-control"></select>
+                <span asp-validation-for="Mode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReceiptReferance" class="control-label"></label>
+                <input asp-for="ReceiptReferance" class="form-control" />
+                <span asp-validation-for="ReceiptReferance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

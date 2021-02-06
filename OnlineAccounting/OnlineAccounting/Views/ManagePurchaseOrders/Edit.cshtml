@@ -1,0 +1,107 @@
+﻿@model OnlineAccounting.Models.Purchase.PurchaseOrder
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>PurchaseOrder</h4>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="VendorId" class="control-label"></label>
+                <select asp-for="VendorId" class="form-control" asp-items="ViewBag.VendorIds"></select>
+                <span asp-validation-for="VendorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliverTo" class="control-label"></label>
+                <input asp-for="DeliverTo" class="form-control" />
+                <span asp-validation-for="DeliverTo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+
+            <hr />
+            <br />
+            <div class="sales-order-item-list">
+                @for (var i = 0; i < Model.ItemList.Count; i++)
+                {
+                    <div class="row">
+                        <input asp-for="ItemList[i].Id" type="hidden" />
+                        <div class="form-group col">
+                            <label asp-for="ItemList[i].ItemId" class="control-label"></label>
+                            <select asp-for="ItemList[i].ItemId" class="form-control" asp-items="ViewBag.ItemIds">
+                                <option value="">Select</option>
+                            </select>
+                            <span asp-validation-for="ItemList[i].ItemId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col">
+                            <label asp-for="ItemList[i].Quantity" class="control-label"></label>
+                            <input asp-for="ItemList[i].Quantity" class="form-control" />
+                            <span asp-validation-for="ItemList[i].Quantity" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col">
+                            <label asp-for="ItemList[i].Rate" class="control-label"></label>
+                            <input asp-for="ItemList[i].Rate" class="form-control" />
+                            <span asp-validation-for="ItemList[i].Rate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col">
+                            <label asp-for="ItemList[i].Discount" class="control-label"></label>
+                            <input asp-for="ItemList[i].Discount" class="form-control" />
+                            <span asp-validation-for="ItemList[i].Discount" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col">
+                            <label asp-for="ItemList[i].Tax" class="control-label"></label>
+                            <input asp-for="ItemList[i].Tax" class="form-control" />
+                            <span asp-validation-for="ItemList[i].Tax" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col">
+                            <label asp-for="ItemList[i].Amount" class="control-label"></label>
+                            <input asp-for="ItemList[i].Amount" class="form-control" />
+                            <span asp-validation-for="ItemList[i].Amount" class="text-danger"></span>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="form-group">
+                <label asp-for="SubTotal" class="control-label"></label>
+                <input asp-for="SubTotal" class="form-control" />
+                <span asp-validation-for="SubTotal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Discount" class="control-label"></label>
+                <input asp-for="Discount" class="form-control" />
+                <span asp-validation-for="Discount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Total" class="control-label"></label>
+                <input asp-for="Total" class="form-control" />
+                <span asp-validation-for="Total" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

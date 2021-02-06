@@ -1,0 +1,88 @@
+﻿@model OnlineAccounting.Models.Purchase.Expense
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Expense</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="JournalEntryId" />
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <select asp-for="Type" class="form-control" asp-items="Html.GetEnumSelectList<ExpenseType>()"></select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpenseAccountId" class="control-label"></label>
+                <select asp-for="ExpenseAccountId" class="form-control" asp-items="ViewBag.ExpenseAccountIds">
+                    <option value="">Select</option>
+                </select>
+                <a asp-action="Create" asp-controller="ManageFinancialAccounts">Add Account</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaidFromAccountId" class="control-label"></label>
+                <select asp-for="PaidFromAccountId" class="form-control" asp-items="ViewBag.PaidFromAccountIds">
+                    <option value="">Select</option>
+                </select>
+                <a asp-action="Create" asp-controller="ManageFinancialAccounts">Add Account</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="HSNCode" class="control-label"></label>
+                <input asp-for="HSNCode" class="form-control" />
+                <span asp-validation-for="HSNCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VendorId" class="control-label"></label>
+                <select asp-for="VendorId" class="form-control" asp-items="ViewBag.VendorIds">
+                    <option value="">Select</option>
+                </select>
+                <a asp-action="Create" asp-controller="ManageVendors">Add Vendor</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tax" class="control-label"></label>
+                <input asp-for="Tax" class="form-control" />
+                <span asp-validation-for="Tax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceReferance" class="control-label"></label>
+                <input asp-for="InvoiceReferance" class="form-control" />
+                <span asp-validation-for="InvoiceReferance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

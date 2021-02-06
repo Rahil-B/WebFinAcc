@@ -1,0 +1,133 @@
+﻿@model OnlineAccounting.Models.Purchase.Expense
+
+@{
+    ViewData["Title"] = "Expense Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Expense</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tax)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tax)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HSNCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HSNCode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vendor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vendor.CompanyName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vendor.SourceOfSupply)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vendor.SourceOfSupply)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vendor.GSTIN)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vendor.GSTIN)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvoiceReferance)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvoiceReferance)
+        </dd>
+    </dl>
+    <br />
+    <h4>
+        Journal Entry
+    </h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.JournalEntry.DebitAccount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JournalEntry.CreditAccount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JournalEntry.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JournalEntry.ReferanceId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JournalEntry.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JournalEntry.Date)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model=> Model.JournalEntry.DebitAccount.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => Model.JournalEntry.CreditAccount.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => Model.JournalEntry.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => Model.JournalEntry.ReferanceId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => Model.JournalEntry.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => Model.JournalEntry.Date)
+                    </td>
+
+                </tr>
+            
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

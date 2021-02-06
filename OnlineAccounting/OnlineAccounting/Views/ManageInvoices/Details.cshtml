@@ -1,0 +1,95 @@
+﻿@model OnlineAccounting.Models.Sales.Invoice
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Invoice</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SalesOrder)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SalesOrder.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SalesOrderNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SalesOrderNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+    </dl>
+    <dl class="row">
+        
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SalesOrder.ShippingCharges)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SalesOrder.ShippingCharges)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SalesOrder.ChargeAdjustment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SalesOrder.ChargeAdjustment)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SalesOrder.Total)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SalesOrder.Total)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SalesOrder.TotalItems)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SalesOrder.TotalItems)
+        </dd>
+    </dl>
+    <table class="table table-striped">
+        <thead>
+            <tr class="d-table-row">
+                <td>@Html.DisplayNameFor(model => model.SalesOrder.ItemList[0].ItemId)</td>
+                <td>@Html.DisplayNameFor(model => model.SalesOrder.ItemList[0].Quantity)</td>
+                <td>@Html.DisplayNameFor(model => model.SalesOrder.ItemList[0].Rate)</td>
+                <td>@Html.DisplayNameFor(model => model.SalesOrder.ItemList[0].Discount)</td>
+                <td>@Html.DisplayNameFor(model => model.SalesOrder.ItemList[0].Tax)</td>
+                <td>@Html.DisplayNameFor(model => model.SalesOrder.ItemList[0].Amount)</td>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.SalesOrder.ItemList.Count; i++)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => model.SalesOrder.ItemList[i].ItemId)</td>
+                    <td>@Html.DisplayFor(model => model.SalesOrder.ItemList[i].Quantity)</td>
+                    <td>@Html.DisplayFor(model => model.SalesOrder.ItemList[i].Rate)</td>
+                    <td>@Html.DisplayFor(model => model.SalesOrder.ItemList[i].Discount)</td>
+                    <td>@Html.DisplayFor(model => model.SalesOrder.ItemList[i].Tax)</td>
+                    <td>@Html.DisplayFor(model => model.SalesOrder.ItemList[i].Amount)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
